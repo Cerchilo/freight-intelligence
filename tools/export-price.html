@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build export quotations with EXW, FCA, FOB, CFR and CIF cost breakdowns.">
+    <title>Export Price Calculator | Freight Intelligence Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <link rel="stylesheet" href="../assets/css/export-price.css">
+</head>
+<body class="calculator-page export-price-page">
+    <nav class="navbar navbar-expand-lg navbar-dark fic-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">FREIGHT<span> INTELLIGENCE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html#tools">Freight Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="calculator-breadcrumb">
+                <a href="../index.html">Home</a><i class="bi bi-chevron-right"></i>
+                <a href="../index.html#tools">Freight Tools</a><i class="bi bi-chevron-right"></i>
+                <span>Export Price Calculator</span>
+            </div>
+            <div class="calculator-heading">
+                <div>
+                    <div class="calculator-eyebrow"><i class="bi bi-currency-exchange"></i> EXPORT PRICING CALCULATION TOOL</div>
+                    <h1>Export Price <span>Calculator</span></h1>
+                    <p>Build an export quotation from product cost, origin handling, freight and insurance using common Incoterms® 2020 delivery points.</p>
+                </div>
+                <div class="calculator-heading-icon"><i class="bi bi-globe2"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container calculator-main export-main">
+        <div class="export-top-controls">
+            <div class="export-mode-control">
+                <label for="transportMode">Transport mode</label>
+                <select id="transportMode" class="form-select export-control">
+                    <option value="sea" selected>Sea / inland waterway</option>
+                    <option value="air">Air / multimodal</option>
+                </select>
+            </div>
+            <div class="export-mode-control">
+                <label for="currency">Quotation currency</label>
+                <select id="currency" class="form-select export-control">
+                    <option value="USD" selected>USD — US Dollar</option>
+                    <option value="INR">INR — Indian Rupee</option>
+                    <option value="EUR">EUR — Euro</option>
+                    <option value="GBP">GBP — Pound Sterling</option>
+                    <option value="AED">AED — UAE Dirham</option>
+                    <option value="SGD">SGD — Singapore Dollar</option>
+                </select>
+            </div>
+            <div class="export-mode-control export-term-control">
+                <label for="selectedTerm">Calculate quotation up to</label>
+                <select id="selectedTerm" class="form-select export-control">
+                    <option value="EXW">EXW — Ex Works</option>
+                    <option value="FCA">FCA — Free Carrier</option>
+                    <option value="FOB" selected>FOB — Free On Board</option>
+                    <option value="CFR">CFR — Cost and Freight</option>
+                    <option value="CIF">CIF — Cost, Insurance and Freight</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="export-incoterm-note" id="termModeNote">
+            <i class="bi bi-info-circle"></i>
+            <span>FOB, CFR and CIF are intended for sea and inland waterway transport. For air or multimodal shipments, use FCA or another suitable Incoterm.</span>
+        </div>
+
+        <div class="row g-4 align-items-start mt-1">
+            <div class="col-lg-7">
+                <section class="calculator-panel export-input-panel">
+                    <div class="panel-heading">
+                        <div><span class="panel-step">STEP 01</span><h2>Export shipment costs</h2><p>Enter the seller's costs in the selected quotation currency.</p></div>
+                    </div>
+
+                    <div class="export-section">
+                        <div class="export-section-heading"><span class="section-number">01</span><div><h3>Product & order details</h3><p>Identify the goods and base selling value.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="productName" class="form-label">Product / shipment description</label>
+                                <input id="productName" class="form-control export-control" type="text" maxlength="120" placeholder="e.g. Cotton garments">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="reference" class="form-label">Quotation / reference (optional)</label>
+                                <input id="reference" class="form-control export-control" type="text" maxlength="60" placeholder="e.g. EXP-2026-001">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="quantity" class="form-label">Quantity</label>
+                                <input id="quantity" class="form-control export-control" type="number" min="1" step="any" value="1">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="unitPrice" class="form-label">Product value / unit</label>
+                                <div class="input-with-unit"><input id="unitPrice" class="form-control export-control" type="number" min="0" step="any" placeholder="e.g. 100"><span id="currencyUnit">USD</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-section">
+                        <div class="export-section-heading"><span class="section-number">02</span><div><h3>Origin-side costs</h3><p>Costs incurred to prepare and deliver goods at the agreed origin point.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="packingCost" class="form-label">Export packing & marking</label>
+                                <div class="input-with-unit"><input id="packingCost" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="inlandTransport" class="form-label">Inland transport to named place / port</label>
+                                <div class="input-with-unit"><input id="inlandTransport" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="loadingCost" class="form-label">Loading / handling at seller's premises</label>
+                                <div class="input-with-unit"><input id="loadingCost" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="exportClearance" class="form-label">Export customs clearance & documents</label>
+                                <div class="input-with-unit"><input id="exportClearance" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="originHandling" class="form-label">Origin terminal / port handling</label>
+                                <div class="input-with-unit"><input id="originHandling" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="onboardLoading" class="form-label">Loading on board / origin loading</label>
+                                <div class="input-with-unit"><input id="onboardLoading" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-section">
+                        <div class="export-section-heading"><span class="section-number">03</span><div><h3>Main carriage & insurance</h3><p>Costs to move the goods to the named destination.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="freightCost" class="form-label">Main freight (sea / air)</label>
+                                <div class="input-with-unit"><input id="freightCost" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="insuranceCost" class="form-label">Cargo insurance premium</label>
+                                <div class="input-with-unit"><input id="insuranceCost" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                            </div>
+                            <div class="col-12">
+                                <div class="export-info-note"><i class="bi bi-info-circle"></i><span>Enter the insurance premium as an amount in the selected currency. For CIF, the seller must procure the insurance required by the applicable Incoterms® rule. This calculator does not calculate an insurance premium automatically.</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="export-divider"></div>
+
+                    <div class="export-section">
+                        <div class="export-section-heading"><span class="section-number">04</span><div><h3>Commercial margin</h3><p>Optionally add a profit margin to the cumulative seller cost.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="profitMargin" class="form-label">Profit margin / markup</label>
+                                <div class="input-with-unit"><input id="profitMargin" class="form-control export-control" type="number" min="0" max="500" step="any" value="0"><span>%</span></div>
+                                <div class="form-text">Applied as a markup on included costs, not a gross-margin formula.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="otherSellerCost" class="form-label">Other seller costs (optional)</label>
+                                <div class="input-with-unit"><input id="otherSellerCost" class="form-control export-control" type="number" min="0" step="any" value="0"><span class="currency-suffix">USD</span></div>
+                                <div class="form-text">Include only if seller bears this cost under the selected rule.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="exportError" class="alert alert-danger export-error" role="alert" aria-live="polite"></div>
+                    <div class="export-actions">
+                        <button type="button" class="btn btn-primary" id="calculateExportBtn"><i class="bi bi-calculator me-2"></i>Calculate export price</button>
+                        <button type="button" class="btn btn-outline-secondary" id="resetExportBtn"><i class="bi bi-arrow-counterclockwise me-2"></i>Reset</button>
+                        <button type="button" class="btn btn-outline-secondary" id="sampleExportBtn"><i class="bi bi-magic me-2"></i>Load sample</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-5">
+                <section class="calculator-panel export-result-panel" aria-live="polite">
+                    <div class="export-result-top">
+                        <span class="panel-step">EXPORT QUOTATION</span>
+                        <h2 id="resultTermTitle">FOB export price</h2>
+                        <p id="resultTermDescription">Seller's estimated price up to the named port of shipment.</p>
+                        <div class="export-price-value"><small id="resultCurrency">USD</small><strong id="exportPrice">0.00</strong></div>
+                        <div class="export-price-caption">Estimated price including selected markup</div>
+                    </div>
+                    <div class="export-result-body">
+                        <div class="export-result-line"><span>Product value + packing</span><strong id="resultProductBase">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Inland transport & loading</span><strong id="resultInland">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Export clearance & origin charges</span><strong id="resultOrigin">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Main freight</span><strong id="resultFreight">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Insurance</span><strong id="resultInsurance">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Other included seller costs</span><strong id="resultOther">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Cost subtotal</span><strong id="resultSubtotal">USD 0.00</strong></div>
+                        <div class="export-result-line"><span>Profit markup</span><strong id="resultMarkup">USD 0.00</strong></div>
+                        <div class="export-result-line export-result-total"><span>Estimated <span id="resultTermShort">FOB</span> price</span><strong id="resultTotal">USD 0.00</strong></div>
+                        <div class="export-unit-note" id="perUnitPrice">Estimated price per unit: —</div>
+                        <div class="export-report-actions">
+                            <button type="button" class="btn btn-outline-secondary" id="downloadExportBtn" disabled><i class="bi bi-download me-2"></i>Download report</button>
+                            <button type="button" class="btn btn-outline-secondary" id="printExportBtn" disabled><i class="bi bi-printer me-2"></i>Print</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="export-ladder-panel mt-4">
+                    <div class="export-ladder-heading"><div><span class="panel-step">COST BUILD-UP</span><h3>Incoterm price ladder</h3></div><span class="ladder-badge" id="ladderModeLabel">SEA</span></div>
+                    <div class="incoterm-ladder" id="incotermLadder">
+                        <div class="ladder-row" data-term="EXW"><span class="ladder-code">EXW</span><span class="ladder-label">Ex Works</span><strong id="ladderEXW">—</strong></div>
+                        <div class="ladder-row" data-term="FCA"><span class="ladder-code">FCA</span><span class="ladder-label">Free Carrier</span><strong id="ladderFCA">—</strong></div>
+                        <div class="ladder-row" data-term="FOB"><span class="ladder-code">FOB</span><span class="ladder-label">Free On Board</span><strong id="ladderFOB">—</strong></div>
+                        <div class="ladder-row" data-term="CFR"><span class="ladder-code">CFR</span><span class="ladder-label">Cost and Freight</span><strong id="ladderCFR">—</strong></div>
+                        <div class="ladder-row" data-term="CIF"><span class="ladder-code">CIF</span><span class="ladder-label">Cost, Insurance and Freight</span><strong id="ladderCIF">—</strong></div>
+                    </div>
+                    <p class="ladder-footnote" id="ladderFootnote">Illustrative cost build-up only. Select a term to calculate the quote.</p>
+                </section>
+
+                <section class="export-reference-panel mt-4">
+                    <h3><i class="bi bi-book-half me-2"></i>Incoterms® reference</h3>
+                    <p>Confirm the correct rule, named place or port, delivery point, risk transfer and insurance obligations before issuing a quotation.</p>
+                    <a href="https://iccwbo.org/business-solutions/incoterms-rules/" target="_blank" rel="noopener noreferrer">ICC Incoterms® rules <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                </section>
+            </div>
+        </div>
+
+        <section class="export-method-panel mt-4">
+            <div class="panel-heading"><div><span class="panel-step">UNDERSTANDING THE TERMS</span><h2>What each price includes</h2><p>High-level cost responsibility guide. The contract's named place and Incoterms® rule control the actual obligations.</p></div></div>
+            <div class="row g-3">
+                <div class="col-md-6 col-xl"><article class="term-card"><span>EXW</span><h3>Ex Works</h3><p>Goods made available at the named place. Buyer generally arranges collection, export and onward carriage.</p></article></div>
+                <div class="col-md-6 col-xl"><article class="term-card"><span>FCA</span><h3>Free Carrier</h3><p>Seller delivers to the buyer's nominated carrier at the named place and completes export clearance.</p></article></div>
+                <div class="col-md-6 col-xl"><article class="term-card"><span>FOB</span><h3>Free On Board</h3><p>Sea / inland waterway only. Seller delivers goods on board the vessel at the port of shipment.</p></article></div>
+                <div class="col-md-6 col-xl"><article class="term-card"><span>CFR</span><h3>Cost and Freight</h3><p>Sea / inland waterway only. Seller pays carriage to the named destination port; risk transfers on board at origin.</p></article></div>
+                <div class="col-md-6 col-xl"><article class="term-card"><span>CIF</span><h3>Cost, Insurance and Freight</h3><p>Sea / inland waterway only. Seller pays carriage and obtains the required cargo insurance to the destination port.</p></article></div>
+            </div>
+        </section>
+
+        <div class="export-disclaimer mt-4"><i class="bi bi-exclamation-triangle"></i><div><strong>Quotation estimate — not an Incoterms compliance checker</strong><p>This calculator builds a simplified seller-cost price ladder. It does not determine contractual obligations, risk transfer, exact loading or terminal responsibility, customs duties, destination charges, taxes, bank charges or local regulatory costs. The selected Incoterm must include the precise named place or port and version (for example, Incoterms® 2020). EXW/FCA cost allocation can vary with the agreed place and operation. Obtain professional review before using the quote commercially.</p></div></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <span>© <span id="currentYear"></span> Freight Intelligence Centre. All rights reserved.</span>
+            <a href="../index.html">Back to home <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/calculators/export-price.js"></script>
+</body>
+</html>

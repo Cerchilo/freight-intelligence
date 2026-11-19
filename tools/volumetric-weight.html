@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate air freight volumetric weight and chargeable weight.">
+    <title>Volumetric Weight Calculator | Freight Intelligence Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <link rel="stylesheet" href="../assets/css/volumetric.css">
+</head>
+
+<body class="calculator-page volumetric-page">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fic-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                FREIGHT<span> INTELLIGENCE</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html#tools">Freight Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#faq">FAQ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="calculator-breadcrumb">
+                <a href="../index.html">Home</a>
+                <i class="bi bi-chevron-right"></i>
+                <a href="../index.html#tools">Freight Tools</a>
+                <i class="bi bi-chevron-right"></i>
+                <span>Volumetric Weight</span>
+            </div>
+
+            <div class="calculator-heading">
+                <div>
+                    <div class="calculator-eyebrow">
+                        <i class="bi bi-airplane"></i>
+                        AIR FREIGHT CALCULATION TOOL
+                    </div>
+
+                    <h1>Volumetric <span>Weight Calculator</span></h1>
+
+                    <p>
+                        Compare your shipment's actual weight with its dimensional
+                        weight to determine the chargeable weight for air freight.
+                    </p>
+                </div>
+
+                <div class="calculator-heading-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main -->
+    <main class="container calculator-main">
+        <div class="row g-4">
+
+            <!-- Inputs -->
+            <div class="col-lg-7">
+                <section class="calculator-panel volumetric-input-panel">
+
+                    <div class="panel-heading">
+                        <div>
+                            <span class="panel-step">STEP 01</span>
+                            <h2>Shipment details</h2>
+                            <p>Enter the package dimensions and shipment weight.</p>
+                        </div>
+                    </div>
+
+                    <div class="volumetric-section">
+                        <div class="volumetric-section-heading">
+                            <span class="section-number">01</span>
+                            <div>
+                                <h3>Package dimensions</h3>
+                                <p>Enter the dimensions of one package.</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="length" class="form-label">Length</label>
+                                <input type="number" id="length" class="form-control volumetric-control" min="0"
+                                    step="any" placeholder="e.g. 60">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="width" class="form-label">Width</label>
+                                <input type="number" id="width" class="form-control volumetric-control" min="0"
+                                    step="any" placeholder="e.g. 40">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="height" class="form-label">Height</label>
+                                <input type="number" id="height" class="form-control volumetric-control" min="0"
+                                    step="any" placeholder="e.g. 30">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="dimensionUnit" class="form-label">Dimension unit</label>
+                                <select id="dimensionUnit" class="form-select volumetric-control">
+                                    <option value="cm" selected>Centimetres (CM)</option>
+                                    <option value="mm">Millimetres (MM)</option>
+                                    <option value="m">Metres (M)</option>
+                                    <option value="inch">Inches (IN)</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="quantity" class="form-label">Number of packages</label>
+                                <input type="number" id="quantity" class="form-control volumetric-control" min="1"
+                                    step="1" value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="volumetric-divider"></div>
+
+                    <div class="volumetric-section">
+                        <div class="volumetric-section-heading">
+                            <span class="section-number">02</span>
+                            <div>
+                                <h3>Actual shipment weight</h3>
+                                <p>Enter the combined gross weight of all packages.</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="actualWeight" class="form-label">
+                                Total actual gross weight (KG)
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="actualWeight" class="form-control volumetric-control" min="0"
+                                    step="any" placeholder="e.g. 25">
+                                <span>KG</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="volumetric-divider"></div>
+
+                    <div class="volumetric-section">
+                        <div class="volumetric-section-heading">
+                            <span class="section-number">03</span>
+                            <div>
+                                <h3>Volumetric divisor</h3>
+                                <p>Use the divisor specified by your airline or carrier.</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-7">
+                                <label for="divisor" class="form-label">
+                                    Divisor (cm³ / kg)
+                                </label>
+                                <input type="number" id="divisor" class="form-control volumetric-control" min="1"
+                                    step="any" value="6000">
+                            </div>
+
+                            <div class="col-md-5">
+                                <div class="divisor-note">
+                                    <i class="bi bi-info-circle"></i>
+                                    Common example: 6000
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="calculator-actions">
+                        <button type="button" class="btn btn-outline-secondary" id="resetVolumetricBtn">
+                            <i class="bi bi-arrow-counterclockwise"></i>
+                            Reset
+                        </button>
+
+                        <button type="button" class="btn btn-calculate" id="calculateVolumetricBtn">
+                            Calculate Weight
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="calculation-error" id="volumetricError" role="alert"></div>
+                </section>
+            </div>
+
+            <!-- Results -->
+            <div class="col-lg-5">
+                <aside class="results-panel volumetric-results-panel">
+
+                    <div class="results-heading">
+                        <span class="panel-step">CALCULATION SUMMARY</span>
+                        <h2>Chargeable weight</h2>
+                        <p>The higher of actual weight and volumetric weight.</p>
+                    </div>
+
+                    <div class="chargeable-result">
+                        <span class="chargeable-label">
+                            <i class="bi bi-airplane"></i>
+                            FINAL CHARGEABLE WEIGHT
+                        </span>
+
+                        <div class="chargeable-value">
+                            <strong id="chargeableWeight">0.00</strong>
+                            <span>KG</span>
+                        </div>
+
+                        <div class="chargeable-status" id="chargeableStatus">
+                            Enter shipment details to calculate
+                        </div>
+                    </div>
+
+                    <div class="weight-comparison">
+                        <div class="weight-card">
+                            <div class="weight-card-heading">
+                                <i class="bi bi-box"></i>
+                                <span>Actual weight</span>
+                            </div>
+                            <strong><span id="resultActualWeight">0.00</span> KG</strong>
+                            <small>Physical gross weight</small>
+                        </div>
+
+                        <div class="weight-card">
+                            <div class="weight-card-heading">
+                                <i class="bi bi-rulers"></i>
+                                <span>Volumetric weight</span>
+                            </div>
+                            <strong><span id="resultVolumetricWeight">0.00</span> KG</strong>
+                            <small>Dimensional weight</small>
+                        </div>
+                    </div>
+
+                    <div class="result-detail-list">
+                        <div>
+                            <span>Total volume</span>
+                            <strong id="resultVolume">0.000 m³</strong>
+                        </div>
+
+                        <div>
+                            <span>Package quantity</span>
+                            <strong id="resultQuantity">0</strong>
+                        </div>
+
+                        <div>
+                            <span>Divisor used</span>
+                            <strong id="resultDivisor">6000</strong>
+                        </div>
+
+                        <div>
+                            <span>Chargeable basis</span>
+                            <strong id="resultBasis">—</strong>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn btn-copy-result" id="copyVolumetricBtn">
+                        <i class="bi bi-clipboard"></i>
+                        Copy Summary
+                    </button>
+
+                    <p class="result-disclaimer">
+                        <i class="bi bi-info-circle"></i>
+                        Actual airline billing may apply rounding rules,
+                        minimum chargeable weights and specific tariff conditions.
+                        Confirm with your carrier.
+                    </p>
+                </aside>
+            </div>
+
+        </div>
+
+        <!-- Formula explanation -->
+        <section class="volumetric-formula-panel">
+            <div class="formula-panel-icon">
+                <i class="bi bi-calculator"></i>
+            </div>
+
+            <div class="formula-panel-content">
+                <h3>How is volumetric weight calculated?</h3>
+
+                <p>
+                    Volumetric weight estimates the space occupied by cargo.
+                    Airlines compare it with the actual gross weight and use
+                    the higher value as the chargeable basis.
+                </p>
+
+                <div class="formula-grid">
+                    <div>
+                        <span>Volumetric weight</span>
+                        <strong>Length × Width × Height × Quantity</strong>
+                        <small>÷ Divisor (cm³/kg)</small>
+                    </div>
+
+                    <div>
+                        <span>Chargeable weight</span>
+                        <strong>Higher of actual or volumetric weight</strong>
+                        <small>Measured in kilograms</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="calculator-footer">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+                <p class="mb-0">
+                    © <span id="currentYear"></span> Freight Intelligence Centre.
+                    All rights reserved.
+                </p>
+
+                <a href="../index.html">
+                    Back to Freight Intelligence Centre
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/calculators/volumetric.js"></script>
+
+</body>
+
+</html>

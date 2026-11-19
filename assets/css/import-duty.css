@@ -1,0 +1,67 @@
+/* Import Duty Calculator — page-specific styles */
+.import-duty-page { background: var(--fic-surface); }
+.import-duty-main { padding-bottom: 90px; }
+.import-input-panel, .import-result-panel, .import-method-panel { border: 1px solid var(--fic-border); border-radius: var(--fic-radius); background: var(--fic-white); box-shadow: var(--fic-shadow); }
+.import-input-panel { padding: 30px; }
+.import-section { padding-top: 26px; }
+.import-section-heading { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+.import-section-heading .section-number { flex: 0 0 34px; height: 34px; display: grid; place-items: center; border-radius: 10px; color: var(--fic-orange-dark); background: #fff0e8; font-size: 12px; font-weight: 800; }
+.import-section-heading h3 { margin: 1px 0 5px; color: var(--fic-ink); font: 700 17px var(--fic-font-heading); }
+.import-section-heading p { margin: 0; color: var(--fic-muted); font-size: 13px; }
+.import-control { min-height: 48px; border-color: var(--fic-border); border-radius: 9px; color: var(--fic-ink); font-size: 14px; }
+.import-control:focus { border-color: var(--fic-orange); box-shadow: 0 0 0 3px rgba(244,119,53,.12); }
+.import-section .form-label { margin-bottom: 8px; color: var(--fic-ink); font-size: 12px; font-weight: 700; }
+.import-section .form-text { color: var(--fic-muted); font-size: 11px; }
+.import-divider { height: 1px; margin-top: 28px; background: var(--fic-border); }
+.import-section .input-with-unit { position: relative; }
+.import-section .input-with-unit .form-control { padding-right: 76px; }
+.import-section .input-with-unit > span { position: absolute; top: 50%; right: 14px; transform: translateY(-50%); color: var(--fic-muted); font-size: 11px; font-weight: 700; }
+.import-info-note, .import-warning-note { display: flex; gap: 10px; align-items: flex-start; padding: 13px 15px; border-radius: 9px; font-size: 12px; line-height: 1.6; }
+.import-info-note { color: #53677d; background: #f2f6fa; }
+.import-info-note i { color: var(--fic-orange); }
+.import-warning-note { color: #87551d; background: #fff8eb; }
+.import-warning-note i { color: #d58b25; }
+.import-error { display: none; margin: 22px 0 0; font-size: 13px; }
+.import-input-panel .calculator-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.import-input-panel .calculator-actions .btn { min-height: 46px; padding-inline: 18px; font-size: 13px; font-weight: 700; }
+.import-result-panel { overflow: hidden; }
+.import-result-top { padding: 28px 28px 25px; color: #fff; background: var(--fic-navy); }
+.import-result-top .panel-step { color: #ff9b68; }
+.import-result-top h2 { margin: 10px 0 5px; color: #fff; font: 800 23px var(--fic-font-heading); }
+.import-result-top p { margin: 0; color: rgba(255,255,255,.68); font-size: 12px; }
+.landed-cost-value { display: flex; align-items: baseline; gap: 5px; margin-top: 25px; }
+.landed-cost-value small { color: #ff9b68; font-size: 21px; font-weight: 700; }
+.landed-cost-value strong { color: #fff; font: 800 clamp(30px,4vw,42px) var(--fic-font-heading); overflow-wrap: anywhere; }
+.landed-cost-caption { color: rgba(255,255,255,.62); font-size: 11px; }
+.import-result-body { padding: 22px 28px 26px; }
+.result-line { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--fic-border); font-size: 12px; }
+.result-line span { color: var(--fic-muted); }
+.result-line strong { color: var(--fic-ink); font-weight: 700; text-align: right; white-space: nowrap; }
+.result-line-total { margin-top: 5px; border-bottom: 0; }
+.result-line-total span, .result-line-total strong { color: var(--fic-ink); font-weight: 800; }
+.result-line-highlight { margin: 5px -12px 0; padding: 15px 12px; border: 0; border-radius: 9px; background: #fff2ea; }
+.result-line-highlight span, .result-line-highlight strong { color: var(--fic-orange-dark); font-weight: 800; }
+.import-base-note { margin-top: 14px; padding: 11px 12px; border-radius: 8px; color: var(--fic-muted); background: #f5f7f9; font-size: 11px; line-height: 1.5; }
+.import-result-actions { display: flex; gap: 9px; margin-top: 18px; }
+.import-result-actions .btn { flex: 1; min-height: 42px; font-size: 12px; font-weight: 700; }
+.import-reference-panel { padding: 22px 24px; border: 1px solid #f3d7c6; border-radius: var(--fic-radius); background: #fffaf6; }
+.import-reference-panel h3 { margin: 0 0 9px; color: var(--fic-ink); font: 800 15px var(--fic-font-heading); }
+.import-reference-panel h3 i { color: var(--fic-orange); }
+.import-reference-panel p { margin: 0 0 12px; color: var(--fic-muted); font-size: 12px; line-height: 1.6; }
+.import-reference-panel a { color: var(--fic-orange-dark); font-size: 12px; font-weight: 800; text-decoration: none; }
+.import-method-panel { padding: 28px; }
+.method-card { height: 100%; padding: 18px; border: 1px solid var(--fic-border); border-radius: 11px; background: #fbfcfd; }
+.method-card > span { display: inline-grid; place-items: center; width: 29px; height: 29px; margin-bottom: 13px; border-radius: 8px; color: var(--fic-orange-dark); background: #fff0e8; font-size: 11px; font-weight: 800; }
+.method-card h3 { margin: 0 0 7px; color: var(--fic-ink); font: 800 15px var(--fic-font-heading); }
+.method-card p { margin: 0; color: var(--fic-muted); font-size: 12px; line-height: 1.6; }
+.import-disclaimer { display: flex; gap: 14px; padding: 20px; border: 1px solid #f1d8ad; border-radius: 12px; color: #81531e; background: #fff9ed; }
+.import-disclaimer > i { color: #d58b25; font-size: 20px; }
+.import-disclaimer strong { display: block; margin-bottom: 5px; font-size: 13px; }
+.import-disclaimer p { margin: 0; font-size: 12px; line-height: 1.65; }
+@media (max-width: 575.98px) {
+  .import-input-panel, .import-method-panel { padding: 20px; }
+  .import-result-top, .import-result-body { padding-inline: 20px; }
+  .import-input-panel .calculator-actions .btn { width: 100%; }
+  .import-result-actions { flex-direction: column; }
+  .result-line { font-size: 11px; }
+}

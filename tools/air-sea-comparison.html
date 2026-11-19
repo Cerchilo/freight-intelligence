@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compare estimated air freight and sea freight costs, chargeable weight, cargo volume and transit times.">
+<title>Air vs Sea Comparison | Freight Intelligence Centre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/variables.css"><link rel="stylesheet" href="../assets/css/style.css"><link rel="stylesheet" href="../assets/css/responsive.css"><link rel="stylesheet" href="../assets/css/calculator.css"><link rel="stylesheet" href="../assets/css/air-sea-comparison.css">
+</head>
+<body class="calculator-page air-sea-page">
+<nav class="navbar navbar-expand-lg navbar-dark fic-navbar"><div class="container">
+<a class="navbar-brand" href="../index.html">FREIGHT<span> INTELLIGENCE</span></a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="mainNavbar"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+<li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li><li class="nav-item"><a class="nav-link active" href="../index.html#tools">Freight Tools</a></li><li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li><li class="nav-item"><a class="nav-link" href="../index.html#faq">FAQ</a></li>
+</ul></div></div></nav>
+<section class="calculator-hero"><div class="container">
+<div class="calculator-breadcrumb"><a href="../index.html">Home</a><i class="bi bi-chevron-right"></i><a href="../index.html#tools">Freight Tools</a><i class="bi bi-chevron-right"></i><span>Air vs Sea Comparison</span></div>
+<div class="calculator-heading"><div><div class="calculator-eyebrow"><i class="bi bi-arrow-left-right"></i> FREIGHT MODE COMPARISON TOOL</div>
+<h1>Air vs Sea <span>Comparison</span></h1><p>Compare estimated freight costs, chargeable weight, cargo volume and transit time to evaluate the right shipping mode.</p></div><div class="calculator-heading-icon"><i class="bi bi-airplane"></i></div></div>
+</div></section>
+<main class="container calculator-main airsea-main">
+<div class="airsea-note"><i class="bi bi-info-circle"></i><span>Enter the rates and transit estimates from your forwarder or carrier. This tool does not fetch live freight rates or schedules.</span></div>
+<div class="row g-4 align-items-start mt-1">
+<div class="col-lg-7"><section class="calculator-panel airsea-input-panel">
+<div class="panel-heading"><div><span class="panel-step">STEP 01</span><h2>Shipment details & rate inputs</h2><p>Use the same currency and shipment scope for both options.</p></div></div>
+<div class="airsea-section"><div class="airsea-section-heading"><span>01</span><div><h3>Route & cargo</h3><p>Enter the shipment route and total cargo measurements.</p></div></div>
+<div class="row g-3">
+<div class="col-md-6"><label class="form-label" for="origin">Origin</label><input id="origin" class="form-control airsea-control" maxlength="80" placeholder="e.g. Chennai, India"></div>
+<div class="col-md-6"><label class="form-label" for="destination">Destination</label><input id="destination" class="form-control airsea-control" maxlength="80" placeholder="e.g. Dubai, UAE"></div>
+<div class="col-md-6"><label class="form-label" for="cargoDescription">Cargo description</label><input id="cargoDescription" class="form-control airsea-control" maxlength="100" placeholder="e.g. Garments"></div>
+<div class="col-md-6"><label class="form-label" for="currency">Quotation currency</label><select id="currency" class="form-select airsea-control"><option value="USD">USD — US Dollar</option><option value="INR" selected>INR — Indian Rupee</option><option value="EUR">EUR — Euro</option><option value="AED">AED — UAE Dirham</option><option value="GBP">GBP — Pound Sterling</option><option value="SGD">SGD — Singapore Dollar</option></select></div>
+<div class="col-md-4"><label class="form-label" for="length">Length (cm)</label><input id="length" type="number" min="0.01" step="any" class="form-control airsea-control" value="60"></div>
+<div class="col-md-4"><label class="form-label" for="width">Width (cm)</label><input id="width" type="number" min="0.01" step="any" class="form-control airsea-control" value="40"></div>
+<div class="col-md-4"><label class="form-label" for="height">Height (cm)</label><input id="height" type="number" min="0.01" step="any" class="form-control airsea-control" value="40"></div>
+<div class="col-md-6"><label class="form-label" for="packages">Number of packages</label><input id="packages" type="number" min="1" step="1" class="form-control airsea-control" value="10"></div>
+<div class="col-md-6"><label class="form-label" for="grossWeight">Total gross weight (kg)</label><input id="grossWeight" type="number" min="0.01" step="any" class="form-control airsea-control" value="300"></div>
+</div></div>
+<div class="airsea-divider"></div>
+<div class="airsea-section"><div class="airsea-section-heading"><span>02</span><div><h3>Air freight estimate</h3><p>Enter your air rate and estimated handling costs.</p></div></div>
+<div class="row g-3">
+<div class="col-md-6"><label class="form-label" for="airRate">Air freight rate / kg</label><input id="airRate" type="number" min="0" step="any" class="form-control airsea-control" value="250"><div class="form-text">Applied to chargeable weight.</div></div>
+<div class="col-md-6"><label class="form-label" for="airDivisor">Volumetric divisor (cm³/kg)</label><input id="airDivisor" type="number" min="1" step="any" class="form-control airsea-control" value="6000"></div>
+<div class="col-md-6"><label class="form-label" for="airFees">Other air charges</label><input id="airFees" type="number" min="0" step="any" class="form-control airsea-control" value="2500"></div>
+<div class="col-md-6"><label class="form-label" for="airDays">Estimated transit time (days)</label><input id="airDays" type="number" min="0" step="any" class="form-control airsea-control" value="5"></div>
+</div></div>
+<div class="airsea-divider"></div>
+<div class="airsea-section"><div class="airsea-section-heading"><span>03</span><div><h3>Sea freight estimate</h3><p>Enter LCL and FCL rates where available, plus handling and transit time.</p></div></div>
+<div class="row g-3">
+<div class="col-md-6"><label class="form-label" for="lclRate">LCL rate / CBM</label><input id="lclRate" type="number" min="0" step="any" class="form-control airsea-control" value="900"></div>
+<div class="col-md-6"><label class="form-label" for="lclMinimum">LCL minimum billing (CBM)</label><input id="lclMinimum" type="number" min="0" step="any" class="form-control airsea-control" value="1"></div>
+<div class="col-md-6"><label class="form-label" for="seaFees">Other sea / port charges</label><input id="seaFees" type="number" min="0" step="any" class="form-control airsea-control" value="4500"></div>
+<div class="col-md-6"><label class="form-label" for="seaDays">Estimated transit time (days)</label><input id="seaDays" type="number" min="0" step="any" class="form-control airsea-control" value="24"></div>
+<div class="col-md-6"><label class="form-label" for="fcl20">20ft FCL all-in freight quote</label><input id="fcl20" type="number" min="0" step="any" class="form-control airsea-control" placeholder="Optional"></div>
+<div class="col-md-6"><label class="form-label" for="fcl40">40ft FCL all-in freight quote</label><input id="fcl40" type="number" min="0" step="any" class="form-control airsea-control" placeholder="Optional"></div>
+<div class="col-12"><div class="form-text">FCL amounts are optional user-entered all-in quotes. If entered, the tool compares each against the LCL estimate; ensure they cover the same charge scope.</div></div>
+</div></div>
+<div class="airsea-actions"><button type="button" class="btn btn-outline-secondary" id="resetAirSeaBtn"><i class="bi bi-arrow-counterclockwise"></i> Reset</button><button type="button" class="btn btn-calculate" id="calculateAirSeaBtn">Compare Freight Modes <i class="bi bi-arrow-right"></i></button></div>
+<div class="airsea-error" id="airseaError" role="alert"></div>
+</section></div>
+<div class="col-lg-5"><div class="airsea-results" id="airseaResults" aria-live="polite">
+<section class="airsea-result-card"><div class="airsea-result-head"><span class="panel-step">COMPARISON RESULT</span><h2>Compare your options</h2><p>Enter shipment details and rates, then calculate to see the comparison.</p></div>
+<div class="airsea-empty"><i class="bi bi-bar-chart-line"></i><strong>Your comparison will appear here</strong><span>Air and sea estimates will be calculated using your entered rates.</span></div></section></div></div>
+</div>
+<section class="airsea-method mt-4"><div class="panel-heading"><div><span class="panel-step">HOW THE ESTIMATE WORKS</span><h2>Calculation basis</h2><p>Indicative comparison formulas used by this tool.</p></div></div>
+<div class="row g-3"><div class="col-md-4"><article class="airsea-formula"><i class="bi bi-airplane"></i><h3>Air chargeable weight</h3><p>The higher of actual gross weight and volumetric weight.</p><strong>Volume (cm³) ÷ divisor</strong></article></div>
+<div class="col-md-4"><article class="airsea-formula"><i class="bi bi-box-seam"></i><h3>Sea LCL estimate</h3><p>Billable volume uses the greater of shipment CBM and the entered minimum.</p><strong>Billable CBM × rate + charges</strong></article></div>
+<div class="col-md-4"><article class="airsea-formula"><i class="bi bi-truck"></i><h3>FCL comparison</h3><p>Optional 20ft and 40ft quote inputs are compared as supplied.</p><strong>Entered all-in quote</strong></article></div></div>
+</section>
+<div class="airsea-disclaimer mt-4"><i class="bi bi-exclamation-triangle"></i><div><strong>Planning estimate only — not a live freight quotation</strong><p>Rates, surcharges, minimums, chargeable-weight rounding, volumetric divisors, route availability, transit times, port charges, customs costs and service conditions vary by carrier, forwarder, route, season and cargo. Enter comparable current quotes and confirm all inclusions, exclusions, schedules and cargo restrictions with your freight provider before booking. FCL quotes should cover the same charge scope as the LCL estimate for a fair comparison.</p></div></div>
+</main>
+<footer class="site-footer"><div class="container d-flex flex-wrap justify-content-between align-items-center gap-3"><span>© <span id="currentYear"></span> Freight Intelligence Centre. All rights reserved.</span><a href="../index.html">Back to home <i class="bi bi-arrow-up-right"></i></a></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script><script src="../assets/js/calculators/air-sea-comparison.js"></script>
+</body></html>

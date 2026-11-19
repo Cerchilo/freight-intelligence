@@ -1,0 +1,357 @@
+/* =========================================
+   VOLUMETRIC WEIGHT CALCULATOR
+========================================= */
+
+.volumetric-input-panel {
+    height: 100%;
+}
+
+.volumetric-section {
+    padding: 4px 0;
+}
+
+.volumetric-section-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.section-number {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    background: #fff4e8;
+    color: #e8892c;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.volumetric-section-heading h3 {
+    color: #172338;
+    font-size: 13px;
+    font-weight: 800;
+    margin: 2px 0 5px;
+}
+
+.volumetric-section-heading p {
+    color: #8993a1;
+    font-size: 10px;
+    margin: 0;
+}
+
+.volumetric-section .form-label {
+    display: block;
+    color: #647084;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.volumetric-control {
+    min-height: 43px;
+    border: 1px solid #e2e7ee;
+    border-radius: 7px;
+    color: #172338;
+    font-family: inherit;
+    font-size: 12px;
+    box-shadow: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.volumetric-control:focus {
+    border-color: #f28c28;
+    box-shadow: 0 0 0 3px rgba(242, 140, 40, .10);
+}
+
+.volumetric-control::placeholder {
+    color: #aab2bd;
+}
+
+.volumetric-divider {
+    height: 1px;
+    background: #edf0f4;
+    margin: 25px 0;
+}
+
+.input-with-unit {
+    position: relative;
+}
+
+.input-with-unit input {
+    padding-right: 55px;
+}
+
+.input-with-unit>span {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    color: #8b95a3;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.divisor-note {
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px;
+    border-radius: 7px;
+    background: #f7f9fb;
+    color: #778293;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.divisor-note i {
+    color: #e8892c;
+    font-size: 13px;
+}
+
+/* Main chargeable result */
+
+.chargeable-result {
+    padding: 23px;
+    border-radius: 10px;
+    background: #101e33;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.chargeable-result::after {
+    content: "";
+    position: absolute;
+    right: -55px;
+    top: -65px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 1px solid rgba(242, 140, 40, .28);
+    box-shadow:
+        0 0 0 18px rgba(242, 140, 40, .035),
+        0 0 0 38px rgba(242, 140, 40, .025);
+    pointer-events: none;
+}
+
+.chargeable-label {
+    position: relative;
+    z-index: 1;
+    color: rgba(255, 255, 255, .65);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.chargeable-label i {
+    color: #f28c28;
+    margin-right: 5px;
+}
+
+.chargeable-value {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    margin: 15px 0 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.chargeable-value strong {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.chargeable-value span {
+    color: #f28c28;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.chargeable-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 25px;
+    padding: 5px 9px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, .09);
+    color: rgba(255, 255, 255, .8);
+    font-size: 9px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+/* Comparison cards */
+
+.weight-comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.weight-card {
+    padding: 15px 13px;
+    border: 1px solid #e9edf2;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.weight-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #8490a0;
+    font-size: 9px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.weight-card-heading i {
+    color: #e8892c;
+    font-size: 13px;
+}
+
+.weight-card>strong {
+    display: block;
+    color: #172338;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.weight-card>small {
+    display: block;
+    color: #9aa3af;
+    font-size: 9px;
+    margin-top: 5px;
+}
+
+/* Detail rows */
+
+.result-detail-list {
+    margin-top: 17px;
+}
+
+.result-detail-list>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.result-detail-list span {
+    color: #8490a0;
+    font-size: 10px;
+}
+
+.result-detail-list strong {
+    color: #172338;
+    font-size: 11px;
+    font-weight: 800;
+    text-align: right;
+}
+
+/* Formula section */
+
+.volumetric-formula-panel {
+    display: flex;
+    gap: 18px;
+    margin-top: 25px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #e8edf3;
+    border-radius: 13px;
+    box-shadow: 0 8px 30px rgba(16, 30, 51, .035);
+    animation: calculatorFadeUp .55s ease both;
+}
+
+.formula-panel-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: #fff4e8;
+    color: #e8892c;
+    font-size: 20px;
+}
+
+.formula-panel-content h3 {
+    color: #172338;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 3px 0 8px;
+}
+
+.formula-panel-content>p {
+    color: #778293;
+    font-size: 11px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.formula-grid>div {
+    padding: 14px;
+    border: 1px solid #edf0f4;
+    border-radius: 8px;
+    background: #f9fafc;
+}
+
+.formula-grid span {
+    display: block;
+    color: #8b95a3;
+    font-size: 9px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.formula-grid strong {
+    display: block;
+    color: #172338;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.formula-grid small {
+    display: block;
+    color: #9aa3af;
+    font-size: 9px;
+    margin-top: 5px;
+}
+
+/* Responsive */
+
+@media (max-width: 575px) {
+
+    .weight-comparison,
+    .formula-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .volumetric-formula-panel {
+        padding: 18px;
+        gap: 12px;
+    }
+
+    .chargeable-value strong {
+        font-size: 39px;
+    }
+}

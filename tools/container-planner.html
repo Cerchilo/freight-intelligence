@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Calculate cargo CBM and plan container loading with an interactive 3D cargo visualization.">
+    <title>Container & Cargo Planner | Freight Intelligence Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/container-planner.css">
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body class="planner-page">
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand brand" href="../index.html">
+                    <span class="brand-mark"><i class="bi bi-box-seam"></i></span>
+                    FREIGHT <span class="brand-light">INTELLIGENCE</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#plannerNav"
+                    aria-controls="plannerNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="plannerNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                        <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="../index.html#tools">Freight Tools</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../index.html#faq">FAQs</a></li>
+                        <li class="nav-item ms-lg-2"><a href="#cargo-section" class="btn btn-nav">Start Planning <i
+                                    class="bi bi-arrow-down-right ms-1"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="planner-hero">
+        <div class="container planner-hero-inner">
+            <div class="planner-breadcrumb"><a href="../index.html">Home</a><i class="bi bi-chevron-right"></i><a
+                    href="../index.html#tools">Freight Tools</a><i class="bi bi-chevron-right"></i><span>Container &
+                    Cargo Planner</span></div>
+            <div class="planner-hero-content">
+                <div>
+                    <div class="planner-eyebrow"><span></span> INTEGRATED CARGO PLANNING TOOL</div>
+                    <h1>Container <em>&</em> Cargo Planner</h1>
+                    <p>Calculate shipment volume, evaluate container capacity and visualize a practical cargo loading
+                        arrangement — all from one workspace.</p>
+                    <div class="planner-hero-points"><span><i class="bi bi-calculator"></i> CBM
+                            calculation</span><span><i class="bi bi-boxes"></i> Multi-item cargo</span><span><i
+                                class="bi bi-box"></i> 3D loading view</span></div>
+                </div>
+                <div class="planner-hero-art" aria-hidden="true">
+                    <div class="hero-art-orbit orbit-a"></div>
+                    <div class="hero-art-orbit orbit-b"></div>
+                    <div class="hero-art-container">
+                        <div class="art-ribs"></div>
+                        <div class="art-door"></div>
+                        <div class="art-lock"></div>
+                    </div>
+                    <div class="hero-art-caption"><i class="bi bi-activity"></i> CARGO PLANNING WORKSPACE</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container planner-main">
+        <div class="planner-stepbar">
+            <a href="#cargo-section" class="step-link active"><span>01</span>
+                <div><strong>Cargo details</strong><small>Enter dimensions & weight</small></div>
+            </a>
+            <div class="step-connector"></div>
+            <a href="#container-section" class="step-link"><span>02</span>
+                <div><strong>Container setup</strong><small>Select equipment</small></div>
+            </a>
+            <div class="step-connector"></div>
+            <a href="#visualization-section" class="step-link"><span>03</span>
+                <div><strong>Optimize & inspect</strong><small>View loading plan</small></div>
+            </a>
+        </div>
+
+        <section id="cargo-section" class="planner-section">
+            <div class="section-title-row">
+                <div>
+                    <div class="planner-kicker">STEP 01 / CARGO INPUT</div>
+                    <h2>Build your cargo list</h2>
+                    <p>Add each cargo type once, then enter how many packages you have.</p>
+                </div>
+                <button type="button" class="btn-planner-secondary" id="addCargoBtn"><i class="bi bi-plus-lg"></i> Add
+                    cargo item</button>
+            </div>
+
+            <div class="planner-card cargo-card">
+                <div class="cargo-table-scroll">
+                    <table class="table planner-cargo-table align-middle">
+                        <thead>
+                            <tr>
+                                <th class="cargo-col-name">Cargo description</th>
+                                <th>Length</th>
+                                <th>Width</th>
+                                <th>Height</th>
+                                <th>Unit</th>
+                                <th>Qty</th>
+                                <th>Weight / pkg (kg)</th>
+                                <th>Stackable</th>
+                                <th>Rotate</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="cargoRows"></tbody>
+                    </table>
+                </div>
+                <div class="cargo-card-footer"><span><i class="bi bi-info-circle"></i> Enter external package
+                        dimensions, including pallet or packaging where applicable.</span><button type="button"
+                        class="text-button" id="clearCargoBtn">Clear all items</button></div>
+            </div>
+
+            <div class="cargo-summary-grid" aria-live="polite">
+                <div class="cargo-summary-card"><span class="summary-icon"><i class="bi bi-boxes"></i></span>
+                    <div><small>TOTAL PACKAGES</small><strong id="summaryPackages">0</strong></div>
+                </div>
+                <div class="cargo-summary-card"><span class="summary-icon"><i class="bi bi-box"></i></span>
+                    <div><small>TOTAL CARGO VOLUME</small><strong><span id="summaryCbm">0.000</span> <small
+                                class="summary-unit">CBM</small></strong></div>
+                </div>
+                <div class="cargo-summary-card"><span class="summary-icon"><i class="bi bi-weight"></i></span>
+                    <div><small>GROSS WEIGHT</small><strong><span id="summaryWeight">0.00</span> <small
+                                class="summary-unit">KG</small></strong></div>
+                </div>
+                <div class="cargo-summary-card"><span class="summary-icon"><i class="bi bi-rulers"></i></span>
+                    <div><small>AVERAGE CBM / PACKAGE</small><strong id="summaryAverage">0.000</strong></div>
+                </div>
+            </div>
+            <div class="planner-alert" id="plannerError" role="alert" aria-live="polite"></div>
+        </section>
+
+        <section id="container-section" class="planner-section">
+            <div class="section-title-row">
+                <div>
+                    <div class="planner-kicker">STEP 02 / EQUIPMENT SETUP</div>
+                    <h2>Choose your container</h2>
+                    <p>Select a container type. You can edit its internal dimensions and payload to match your equipment
+                        specification.</p>
+                </div>
+            </div>
+
+            <div class="planner-card container-config-card">
+                <div class="container-presets" role="group" aria-label="Container type">
+                    <button type="button" class="container-preset active" data-container="20std"><i
+                            class="bi bi-box-seam"></i><strong>20ft Standard</strong><small>General
+                            purpose</small></button>
+                    <button type="button" class="container-preset" data-container="40std"><i
+                            class="bi bi-box-seam"></i><strong>40ft Standard</strong><small>General
+                            purpose</small></button>
+                    <button type="button" class="container-preset" data-container="40hc"><i
+                            class="bi bi-box-seam"></i><strong>40ft High Cube</strong><small>Extra
+                            height</small></button>
+                    <button type="button" class="container-preset" data-container="20reefer"><i
+                            class="bi bi-snow"></i><strong>20ft Reefer</strong><small>Temperature
+                            controlled</small></button>
+                    <button type="button" class="container-preset" data-container="40reefer"><i
+                            class="bi bi-snow"></i><strong>40ft Reefer</strong><small>Temperature
+                            controlled</small></button>
+                </div>
+                <div class="container-spec-heading">
+                    <div><span class="spec-label">SELECTED EQUIPMENT</span>
+                        <h3 id="selectedContainerName">20ft Standard Container</h3>
+                    </div><span class="spec-note"><i class="bi bi-sliders"></i> Editable specifications</span>
+                </div>
+                <div class="row g-3 container-spec-grid">
+                    <div class="col-6 col-lg-3"><label for="containerLength">Internal length (m)</label><input
+                            id="containerLength" class="form-control spec-input" type="number" min="0.1" step="0.01"
+                            value="5.90"></div>
+                    <div class="col-6 col-lg-3"><label for="containerWidth">Internal width (m)</label><input
+                            id="containerWidth" class="form-control spec-input" type="number" min="0.1" step="0.01"
+                            value="2.35"></div>
+                    <div class="col-6 col-lg-3"><label for="containerHeight">Internal height (m)</label><input
+                            id="containerHeight" class="form-control spec-input" type="number" min="0.1" step="0.01"
+                            value="2.39"></div>
+                    <div class="col-6 col-lg-3"><label for="containerPayload">Max payload (kg)</label><input
+                            id="containerPayload" class="form-control spec-input" type="number" min="1" step="1"
+                            value="28200"></div>
+                </div>
+                <div class="container-spec-footnote"><i class="bi bi-exclamation-triangle"></i> Reference dimensions and
+                    payloads are illustrative defaults, not guaranteed specifications. Confirm the actual container's
+                    CSC plate and carrier/equipment data before planning a shipment.</div>
+            </div>
+        </section>
+
+        <section id="visualization-section" class="planner-section">
+            <div class="section-title-row optimizer-title-row">
+                <div>
+                    <div class="planner-kicker">STEP 03 / LOADING OPTIMIZATION</div>
+                    <h2>Optimize container loading</h2>
+                    <p>Generate a placement plan and inspect the cargo arrangement in 3D.</p>
+                </div>
+                <button type="button" class="btn-planner-primary" id="optimizeBtn"><i class="bi bi-stars"></i> Optimize
+                    loading</button>
+            </div>
+
+            <div class="optimizer-layout">
+                <div class="planner-card visualization-card">
+                    <div class="visualization-toolbar">
+                        <div><strong>3D container visualization</strong><span id="visualizationSubtitle">Select cargo
+                                and optimize to begin</span></div>
+                        <div class="viewer-actions"><button type="button" id="viewResetBtn" title="Reset camera"
+                                aria-label="Reset camera"><i class="bi bi-arrow-clockwise"></i></button><button
+                                type="button" id="showContainerBtn" class="active" title="Show container"
+                                aria-label="Show container"><i class="bi bi-box"></i></button><button type="button"
+                                id="showCargoBtn" class="active" title="Show cargo" aria-label="Show cargo"><i
+                                    class="bi bi-boxes"></i></button></div>
+                    </div>
+                    <div class="three-view-wrap">
+                        <div id="container3D" class="container-3d"></div>
+                        <div class="viewer-loading" id="viewerLoading"><span
+                                class="loading-spinner"></span><strong>Preparing 3D workspace</strong><small>Loading the
+                                container scene…</small></div>
+                        <div class="viewer-hint"><i class="bi bi-mouse"></i> Drag to orbit <span>·</span> Scroll to zoom
+                            <span>·</span> Right-drag to pan</div>
+                    </div>
+                    <div class="visualization-legend"><span><i class="legend-dot legend-carton"></i> Cartons /
+                            boxes</span><span><i class="legend-dot legend-pallet"></i> Palletized cargo</span><span><i
+                                class="legend-dot legend-container"></i> Container structure</span></div>
+                </div>
+
+                <aside class="planner-card utilization-card">
+                    <div class="utilization-heading"><span class="spec-label">LOAD ANALYSIS</span>
+                        <h3>Container utilization</h3>
+                        <p>Based on the generated loading arrangement.</p>
+                    </div>
+                    <div class="utilization-main">
+                        <div class="utilization-ring" id="volumeRing">
+                            <div><strong id="volumeUtilization">0%</strong><small>VOLUME</small></div>
+                        </div>
+                        <div class="utilization-volume"><strong id="utilizedVolume">0.000</strong><span>of <b
+                                    id="capacityVolume">33.18</b> CBM</span></div>
+                    </div>
+                    <div class="utilization-metric">
+                        <div><span>Payload utilization</span><strong id="payloadUtilization">0%</strong></div>
+                        <div class="progress">
+                            <div id="payloadProgress" class="progress-bar"></div>
+                        </div><small><span id="loadedWeight">0.00</span> kg loaded · <span
+                                id="payloadLimit">28,200</span> kg payload</small>
+                    </div>
+                    <div class="utilization-divider"></div>
+                    <div class="load-stats">
+                        <div><span>Packages loaded</span><strong id="loadedPackages">0 / 0</strong></div>
+                        <div><span>Packages not placed</span><strong id="unplacedPackages">0</strong></div>
+                        <div><span>Remaining volume</span><strong id="remainingVolume">0.000 CBM</strong></div>
+                        <div><span>Remaining payload</span><strong id="remainingPayload">0.00 kg</strong></div>
+                    </div>
+                    <div id="optimizerStatus" class="optimizer-status neutral"><i
+                            class="bi bi-info-circle"></i><span>Add cargo and run the optimizer to view the loading
+                            status.</span></div>
+                </aside>
+            </div>
+
+            <div class="planner-card placement-card">
+                <div class="placement-heading">
+                    <div><span class="spec-label">LOADING PLAN</span>
+                        <h3>Package placement details</h3>
+                        <p>Each placed package is represented in the 3D scene.</p>
+                    </div>
+                    <div class="placement-actions"><button type="button" id="downloadReportBtn"
+                            class="btn-planner-secondary" disabled><i class="bi bi-download"></i> Download
+                            report</button><button type="button" id="printReportBtn" class="btn-planner-secondary"
+                            disabled><i class="bi bi-printer"></i> Print</button></div>
+                </div>
+                <div class="placement-table-wrap">
+                    <table class="table placement-table">
+                        <thead>
+                            <tr>
+                                <th>Package</th>
+                                <th>Cargo item</th>
+                                <th>Position (X, Y, Z)</th>
+                                <th>Placed dimensions</th>
+                                <th>Weight</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="placementRows">
+                            <tr>
+                                <td colspan="6" class="placement-empty">Run the optimizer to generate package placement
+                                    details.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="planner-notes">
+            <div class="notes-icon"><i class="bi bi-shield-check"></i></div>
+            <div><strong>Planning estimate — not a certified stowage plan</strong>
+                <p>The optimizer uses a heuristic placement algorithm. It does not validate cargo strength, axle/floor
+                    point loads, centre of gravity, lashing, dangerous-goods segregation, ventilation, temperature
+                    requirements or all operational loading constraints. Always have the final plan reviewed by a
+                    qualified loading professional.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3"><a
+                class="navbar-brand brand footer-brand" href="../index.html"><span class="brand-mark"><i
+                        class="bi bi-box-seam"></i></span> FREIGHT <span class="brand-light">INTELLIGENCE</span></a>
+            <p class="mb-0">© <span id="currentYear"></span> Freight Intelligence Centre. All rights reserved.</p><a
+                href="#" class="back-top" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="../assets/js/calculators/container-planner.js"></script>
+</body>
+
+</html>

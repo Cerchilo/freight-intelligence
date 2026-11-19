@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Estimate Indian import customs duty, IGST and landed cost with an adjustable duty breakdown.">
+    <title>Import Duty Calculator | Freight Intelligence Centre</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/variables.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <link rel="stylesheet" href="../assets/css/calculator.css">
+    <link rel="stylesheet" href="../assets/css/import-duty.css">
+</head>
+<body class="calculator-page import-duty-page">
+    <nav class="navbar navbar-expand-lg navbar-dark fic-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">FREIGHT<span> INTELLIGENCE</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../index.html#tools">Freight Tools</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="calculator-hero">
+        <div class="container">
+            <div class="calculator-breadcrumb">
+                <a href="../index.html">Home</a><i class="bi bi-chevron-right"></i>
+                <a href="../index.html#tools">Freight Tools</a><i class="bi bi-chevron-right"></i>
+                <span>Import Duty Calculator</span>
+            </div>
+            <div class="calculator-heading">
+                <div>
+                    <div class="calculator-eyebrow"><i class="bi bi-receipt-cutoff"></i> INDIA CUSTOMS CALCULATION TOOL</div>
+                    <h1>Import Duty <span>Calculator</span></h1>
+                    <p>Estimate customs duties, IGST and landed cost for goods imported into India using the rates applicable to your product.</p>
+                </div>
+                <div class="calculator-heading-icon"><i class="bi bi-calculator"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container calculator-main import-duty-main">
+        <div class="row g-4 align-items-start">
+            <div class="col-lg-7">
+                <section class="calculator-panel import-input-panel">
+                    <div class="panel-heading">
+                        <div><span class="panel-step">STEP 01</span><h2>Import details</h2>
+                            <p>Enter product identification and the customs assessable value.</p></div>
+                    </div>
+
+                    <div class="import-section">
+                        <div class="import-section-heading"><span class="section-number">01</span><div><h3>Product information</h3><p>Use the HS code and origin country to verify the applicable tariff.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="productDescription" class="form-label">Product description</label>
+                                <input id="productDescription" class="form-control import-control" type="text" maxlength="120" placeholder="e.g. Industrial machine parts">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="hsCode" class="form-label">HS code / CTH</label>
+                                <input id="hsCode" class="form-control import-control" type="text" inputmode="numeric" maxlength="10" placeholder="e.g. 8479">
+                                <div class="form-text">Enter the tariff item used for your shipment.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="originCountry" class="form-label">Country of origin</label>
+                                <input id="originCountry" class="form-control import-control" type="text" placeholder="e.g. China">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="quantity" class="form-label">Quantity (optional reference)</label>
+                                <input id="quantity" class="form-control import-control" type="number" min="1" step="1" value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="import-divider"></div>
+
+                    <div class="import-section">
+                        <div class="import-section-heading"><span class="section-number">02</span><div><h3>Assessable value</h3><p>Enter the final customs assessable value in Indian rupees.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="assessableValue" class="form-label">Assessable value (₹)</label>
+                                <div class="input-with-unit"><input id="assessableValue" class="form-control import-control" type="number" min="0" step="any" placeholder="e.g. 100000"><span>INR</span></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="rounding" class="form-label">Display rounding</label>
+                                <select id="rounding" class="form-select import-control">
+                                    <option value="2" selected>2 decimals</option><option value="0">Whole rupees</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="import-info-note mt-3"><i class="bi bi-info-circle"></i><span>Assessable value is not necessarily the invoice value. Customs valuation may include freight, insurance and other prescribed additions. Determine it under the applicable valuation rules before calculating duty.</span></div>
+                    </div>
+
+                    <div class="import-divider"></div>
+
+                    <div class="import-section">
+                        <div class="import-section-heading"><span class="section-number">03</span><div><h3>Applicable duty rates</h3><p>Enter the effective rates confirmed for your HS code, origin and exemption status.</p></div></div>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="bcdRate" class="form-label">Basic Customs Duty (BCD)</label>
+                                <div class="input-with-unit"><input id="bcdRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="10"><span>%</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="swsRate" class="form-label">Social Welfare Surcharge (SWS)</label>
+                                <div class="input-with-unit"><input id="swsRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="10"><span>% of BCD</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="aidcRate" class="form-label">Agriculture Infrastructure & Development Cess (AIDC)</label>
+                                <div class="input-with-unit"><input id="aidcRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="0"><span>%</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="healthCessRate" class="form-label">Other ad valorem cess / duty</label>
+                                <div class="input-with-unit"><input id="healthCessRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="0"><span>%</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="antiDumping" class="form-label">Anti-dumping / safeguard / specific duties</label>
+                                <div class="input-with-unit"><input id="antiDumping" class="form-control import-control" type="number" min="0" step="any" value="0"><span>₹</span></div>
+                                <div class="form-text">Enter the total amount, if applicable.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="otherDuty" class="form-label">Other customs duties / cess</label>
+                                <div class="input-with-unit"><input id="otherDuty" class="form-control import-control" type="number" min="0" step="any" value="0"><span>₹</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="igstRate" class="form-label">IGST rate</label>
+                                <div class="input-with-unit"><input id="igstRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="18"><span>%</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="compCessRate" class="form-label">GST compensation cess (if applicable)</label>
+                                <div class="input-with-unit"><input id="compCessRate" class="form-control import-control" type="number" min="0" max="100" step="any" value="0"><span>%</span></div>
+                            </div>
+                        </div>
+                        <div class="import-warning-note mt-3"><i class="bi bi-exclamation-triangle"></i><span>Rates above are editable working inputs, not tariff recommendations. SWS exemptions, AIDC, health cess, anti-dumping, safeguard and other levies depend on the specific tariff item and notifications. Confirm each applicable base and exemption before relying on an estimate.</span></div>
+                    </div>
+
+                    <div id="importError" class="alert alert-danger import-error" role="alert" aria-live="polite"></div>
+                    <div class="calculator-actions">
+                        <button type="button" class="btn btn-primary" id="calculateImportBtn"><i class="bi bi-calculator me-2"></i>Calculate import duty</button>
+                        <button type="button" class="btn btn-outline-secondary" id="resetImportBtn"><i class="bi bi-arrow-counterclockwise me-2"></i>Reset</button>
+                        <button type="button" class="btn btn-outline-secondary" id="sampleImportBtn"><i class="bi bi-magic me-2"></i>Load sample</button>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-5">
+                <section class="calculator-panel import-result-panel" aria-live="polite">
+                    <div class="import-result-top">
+                        <span class="panel-step">CALCULATION SUMMARY</span>
+                        <h2>Estimated landed cost</h2>
+                        <p>Based on the assessable value and rates entered.</p>
+                        <div class="landed-cost-value"><small>₹</small><strong id="landedCost">0.00</strong></div>
+                        <div class="landed-cost-caption">Assessable value + estimated customs duties and taxes</div>
+                    </div>
+                    <div class="import-result-body">
+                        <div class="result-line"><span>Assessable value</span><strong id="resultAssessable">₹0.00</strong></div>
+                        <div class="result-line"><span>Basic Customs Duty (BCD)</span><strong id="resultBcd">₹0.00</strong></div>
+                        <div class="result-line"><span>Social Welfare Surcharge</span><strong id="resultSws">₹0.00</strong></div>
+                        <div class="result-line"><span>AIDC</span><strong id="resultAidc">₹0.00</strong></div>
+                        <div class="result-line"><span>Other ad valorem duty / cess</span><strong id="resultOtherCess">₹0.00</strong></div>
+                        <div class="result-line"><span>Specific / other duties</span><strong id="resultSpecific">₹0.00</strong></div>
+                        <div class="result-line"><span>IGST</span><strong id="resultIgst">₹0.00</strong></div>
+                        <div class="result-line"><span>Compensation cess</span><strong id="resultCompCess">₹0.00</strong></div>
+                        <div class="result-line result-line-total"><span>Total customs duties & taxes</span><strong id="totalDuty">₹0.00</strong></div>
+                        <div class="result-line result-line-highlight"><span>Estimated landed cost</span><strong id="resultLanded">₹0.00</strong></div>
+                        <div class="import-base-note" id="igstBaseNote">IGST taxable base: —</div>
+                        <div class="import-result-actions">
+                            <button type="button" class="btn btn-outline-secondary" id="downloadImportBtn" disabled><i class="bi bi-download me-2"></i>Download report</button>
+                            <button type="button" class="btn btn-outline-secondary" id="printImportBtn" disabled><i class="bi bi-printer me-2"></i>Print</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="import-reference-panel mt-4">
+                    <h3><i class="bi bi-shield-check me-2"></i>Verify official duty rates</h3>
+                    <p>Use the official ICEGATE import trade guide to check tariff rates, country-specific preferences, notifications and applicable duties for your CTH.</p>
+                    <a href="https://www.icegate.gov.in/Webappl/Trade-Guide-on-Imports" target="_blank" rel="noopener noreferrer">Open ICEGATE Trade Guide <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                </section>
+            </div>
+        </div>
+
+        <section class="import-method-panel mt-4">
+            <div class="panel-heading"><div><span class="panel-step">HOW IT WORKS</span><h2>Calculation method</h2><p>Illustrative sequence used by this estimator. Actual statutory bases and exemptions may differ by levy.</p></div></div>
+            <div class="row g-3">
+                <div class="col-md-4"><div class="method-card"><span>01</span><h3>BCD</h3><p>Assessable value × BCD rate.</p></div></div>
+                <div class="col-md-4"><div class="method-card"><span>02</span><h3>SWS</h3><p>For the simple estimate, SWS rate × BCD. Check the statutory SWS base and exclusions for the goods.</p></div></div>
+                <div class="col-md-4"><div class="method-card"><span>03</span><h3>IGST & landed cost</h3><p>IGST is estimated on assessable value plus the entered eligible customs duty components. Landed cost adds estimated duties to assessable value.</p></div></div>
+            </div>
+        </section>
+
+        <div class="import-disclaimer mt-4"><i class="bi bi-info-circle"></i><div><strong>Planning estimate — not a customs assessment</strong><p>This tool does not classify goods, fetch live tariff rates, determine customs assessable value, apply exemption notifications or calculate every product-specific levy. It also excludes port, terminal, handling, brokerage, storage and inland transport charges. Confirm the bill of entry assessment with a licensed customs broker or qualified professional.</p></div></div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <span>© <span id="currentYear"></span> Freight Intelligence Centre. All rights reserved.</span>
+            <a href="../index.html">Back to home <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/calculators/import-duty.js"></script>
+</body>
+</html>

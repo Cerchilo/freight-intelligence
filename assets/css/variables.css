@@ -1,0 +1,40 @@
+:root {
+
+  /* Brand Colors */
+  --fic-navy: #101f32;
+  --fic-navy-deep: #0a1727;
+  --fic-navy-soft: #1a3049;
+
+  --fic-orange: #f47735;
+  --fic-orange-dark: #df6124;
+
+  /* Text */
+  --fic-ink: #182536;
+  --fic-muted: #6c7887;
+
+  /* Background */
+  --fic-surface: #f4f6f8;
+  --fic-white: #ffffff;
+
+  /* Borders */
+  --fic-border: #e4e9ee;
+
+  /* Typography */
+  --fic-font-body: "DM Sans", sans-serif;
+  --fic-font-heading: "Manrope", sans-serif;
+
+  /* Radius */
+  --fic-radius: 16px;
+  --fic-radius-sm: 10px;
+
+  /* Shadows */
+  --fic-shadow: 0 16px 45px rgba(16, 31, 50, .08);
+
+  /* Animation */
+  --fic-motion-fast: 180ms;
+  --fic-motion-base: 320ms;
+  --fic-motion-slow: 700ms;
+
+  --fic-ease: cubic-bezier(.2, .75, .25, 1);
+
+}
